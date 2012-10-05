@@ -1,0 +1,54 @@
+This Tool is made for enigma2 tuxbox stb's.
+
+It is made for openpli 3.0. and developped for standard PLI-HD skin
+It does run on other HD skins in boxed mode.
+It can be integrated to those skins. 
+An example of how it is done in openpli HD Can be seen below.
+It also runs on opendreambox image oe 2.0 .
+
+After You installed this plugin and restarted enigma2,
+You will find the SystemTools under the extensions menu (blue button).
+With configure(yellow button) You can select to show the tools in other menu's as well.
+
+Remark for dmm opendreambox, If gemini3 is installed,
+You need to push long time on the blue button to show extensions menu.
+
+
+Example on how to adapt the tools to skin.
+
+For the standard PLI-HD skin (It is already implemented in openpli 3.0)
+
+ <!-- SystemTools -->
+
+  <screen name="SystemToolsSc" position="fill" title="System Tools Main Menu" flags="wfNoBorder">
+    <panel name="PigTemplate"/>
+    <panel name="ButtonTemplate_3"/>
+    <widget name="entries" position="590,110" size="650,466" font="Regular;24" itemHeight="45" scrollbarMode="showOnDemand" selectionPixmap="PLi-HD/buttons/sel.png" />
+  </screen>
+  <screen name="SystemToolsConfig" position="fill" title="System Tools Config Screen" flags="wfNoBorder">
+    <panel name="PigTemplate"/>
+    <panel name="ButtonTemplate_2"/>
+    <widget name="config" position="590,110" size="650,466" scrollbarMode="showOnDemand" selectionPixmap="PLi-HD/buttons/sel.png" />
+  </screen>
+  <screen name="SystemToolsInf" position="fill" title="System Tools Info Menu" flags="wfNoBorder">
+    <panel name="PigTemplate"/>
+    <panel name="ButtonTemplate_2"/>
+    <widget name="entries" position="590,110" size="650,466" font="Regular;24" itemHeight="45" scrollbarMode="showOnDemand" selectionPixmap="PLi-HD/buttons/sel.png" />
+  </screen>
+  <screen name="SystemToolsSwap" position="fill" title="System Tools Swapfile Menu" flags="wfNoBorder">
+    <panel name="PigTemplate"/>
+    <panel name="ButtonTemplate_2"/>
+    <widget name="entries" position="590,110" size="650,466" font="Regular;24" itemHeight="45" scrollbarMode="showOnDemand" selectionPixmap="PLi-HD/buttons/sel.png" />
+  </screen>
+  <screen name="SystemToolsTextBox" position="fill" title="System Tools Text Box" flags="wfNoBorder">
+    <panel name="PigTemplate"/>
+    <panel name="ButtonTemplate_2"/>
+    <widget name="text" position="510,110" size="760,466" font="Console;19" scrollbarMode="showOnDemand" selectionPixmap="PLi-HD/buttons/sel.png" />
+  </screen>
+  <screen name="SystemToolsConsole" position="fill" title="System Tools Console" flags="wfNoBorder">
+    <panel name="PigTemplate"/>
+    <panel name="ButtonTemplate_2"/>
+    <widget name="text" position="510,110" size="770,466" font="Console;19" scrollbarMode="showOnDemand" selectionPixmap="PLi-HD/buttons/sel.png" />
+  </screen>
+
+to the skin.xml file
