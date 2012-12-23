@@ -460,7 +460,7 @@ class SystemToolsSwap(Screen):
 			self.mbox.close()
 		else:
 			os.system('sleep 1')
-			os.system('dd if=/dev/zero of=/media/cf/swapfile bs=1048576 count=128; mkswap /media/cf/swapfile')
+			os.system('dd if=/dev/zero of=/media/cf/swapfile bs=1048576 count=64; mkswap /media/cf/swapfile')
 			os.system('sleep 1')
 			msg = _("Done! You can now activate the SWAP on CF")
 			self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
@@ -475,7 +475,7 @@ class SystemToolsSwap(Screen):
 			self.mbox.close()
 		else:
 			os.system('sleep 1')
-			os.system('dd if=/dev/zero of=/media/hdd/swapfile bs=1048576 count=128; mkswap /media/hdd/swapfile')
+			os.system('dd if=/dev/zero of=/media/hdd/swapfile bs=1048576 count=64; mkswap /media/hdd/swapfile')
 			os.system('sleep 1')
 			msg = _("Done! You can now activate the SWAP on HDD")
 			self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
@@ -490,7 +490,7 @@ class SystemToolsSwap(Screen):
 			self.mbox.close()
 		else:
 			os.system('sleep 1')
-			os.system('dd if=/dev/zero of=/media/usb/swapfile bs=1048576 count=128; mkswap /media/usb/swapfile')
+			os.system('dd if=/dev/zero of=/media/usb/swapfile bs=1048576 count=64; mkswap /media/usb/swapfile')
 			os.system('sleep 1')
 			msg = _("Done! You can now activate the SWAP on USB")
 			self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
