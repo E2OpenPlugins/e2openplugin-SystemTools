@@ -126,11 +126,12 @@ class SystemToolsSc(Screen):
 			"yellow": self.KeyConfig,
 		}, -1)
 
-		self.list.append(("  Restart Aktif Softcam", "com_one"))
-		self.list.append(("  Ecm Info ", "com_two"))
-		self.list.append(("  Menu Swap File Tools", "com_four"))
-		self.list.append(("  Menu System Information Tools ", "com_five"))
-		self.list.append((_("  Exit"), "exit"))
+		self.list.append(("Restart Aktif Softcam", "com_one"))
+		self.list.append(("Ecm Info ", "com_two"))
+		self.list.append(("Delete Epg data CAUTION RESTARTS ENIGMA2 ", "com_six"))
+		self.list.append(("Menu Swap File Tools", "com_four"))
+		self.list.append(("Menu System Information Tools ", "com_five"))
+		self.list.append((_("Exit"), "exit"))
 					
 		self["entries"] = MenuList(self.list)
 		
@@ -163,7 +164,10 @@ class SystemToolsSc(Screen):
 				self.swap()
 
 			elif returnValue is "com_five":
-				self.info()
+				self.info() 
+
+			elif returnValue is "com_six":
+				self.prombt("init 4; sleep 5; rm -rf /media/hdd/epg.dat; rm -rf /media/usb/epg.dat; rm -rf /media/usb/crossepg; rm -rf /media/hdd/crossepg; sleep 5; init 3" )
 						
 			else:
 				print "\n[SystemToolsSc] cancel\n"
