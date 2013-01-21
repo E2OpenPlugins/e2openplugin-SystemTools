@@ -153,7 +153,7 @@ class SystemToolsSc(Screen):
 				self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 				self.activityTimer = eTimer()
 				self.activityTimer.timeout.get().append(self.SoftcamRestart)
-				self.activityTimer.start(100, False)
+				self.activityTimer.start(300, False)
 
 			elif returnValue is "com_two":
 				msg = self.EcmInfo()
@@ -182,13 +182,13 @@ class SystemToolsSc(Screen):
 	def SoftcamRestart(self):
 		self.activityTimer.stop()
 		del self.activityTimer
-		os.system('sleep 1')
+		os.system('sleep 2')
 		os.system('/etc/init.d/softcam stop')
 		self.oldref = self.session.nav.getCurrentlyPlayingServiceReference()
 		self.session.nav.stopService()
-		os.system('sleep 3')
-		os.system('/etc/init.d/softcam start')
 		os.system('sleep 2')
+		os.system('/etc/init.d/softcam start')
+		os.system('sleep 3')
 		if self.mbox:
 			self.mbox.close()
 		self.close()
