@@ -247,6 +247,7 @@ class SystemToolsInf(Screen):
 		}, -1)
 		
 		self.list.append(("  Memory info simple", "com_infone"))
+		self.list.append(("  Memory info list", "com_infseven"))
 		self.list.append(("  Smartreader Info", "com_inftwo"))
 		self.list.append(("  Mounted devices", "com_inftree"))
 		self.list.append(("  Storage devices Info", "com_inffour"))
@@ -286,6 +287,9 @@ class SystemToolsInf(Screen):
 				title = "Linux and Gcc Version"
 				msg = self.lingccInf()
 				self.session.open(SystemToolsTextBox, msg, title)
+
+			elif returnValue is "com_infseven":
+				self.prombt("cat /proc/meminfo")
 
 			else:
 				print "\n[SystemToolsInf] cancel\n"
