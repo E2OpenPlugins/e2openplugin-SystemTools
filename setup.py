@@ -6,4 +6,5 @@ setup (name = 'enigma2-plugin-extensions-systemtools',
        description = 'SystemTools for enigma2 stb',
        packages = [pkg],
        package_dir = {pkg: 'plugin'},
+       package_data = {pkg: ['memorysimple.sh']},
       )
