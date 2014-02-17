@@ -263,7 +263,7 @@ class SystemToolsInf(Screen):
 		
 		if returnValue is not None:
 			if returnValue is "com_infone":
-				self.prombt("free")
+				self.prombt("sh /usr/lib/enigma2/python/Plugins/Extensions/SystemTools/memorysimple.sh")
 				
 			elif returnValue is "com_inftwo":
 				self.prombtbox("list_smargo")
@@ -501,7 +501,7 @@ class SystemToolsSwap(Screen):
 			self.mbox.close()
 		else:
 			os.system('sleep 1')
-			os.system('dd if=/dev/zero of=/media/usb/swapfile bs=1048576 count=64; mkswap /media/usb/swapfile')
+			os.system('dd if=/dev/zero of=/media/usb/swapfile bs=1048576 count=256; mkswap /media/usb/swapfile')
 			os.system('sleep 1')
 			msg = _("Done! You can now activate the SWAP on USB")
 			self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
