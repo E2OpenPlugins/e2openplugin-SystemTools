@@ -263,7 +263,7 @@ class SystemToolsInf(Screen):
 		
 		if returnValue is not None:
 			if returnValue is "com_infone":
-				self.prombt("sh /usr/lib/enigma2/python/Plugins/Extensions/SystemTools/memorysimple.sh")
+				self.prombt("sh /usr/lib/enigma2/python/Plugins/Extensions/SystemTools/scripts/memorysimple")
 				
 			elif returnValue is "com_inftwo":
 				self.prombtbox("list_smargo")
