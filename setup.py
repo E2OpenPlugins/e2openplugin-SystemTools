@@ -2,7 +2,7 @@ from distutils.core import setup, Extension
 
 pkg = 'Extensions.SystemTools'
 setup (name = 'enigma2-plugin-extensions-systemtools',
-       version = '0.4',
+       version = '0.5',
        description = 'SystemTools for enigma2 stb',
        packages = [pkg],
        package_dir = {pkg: 'plugin'},
