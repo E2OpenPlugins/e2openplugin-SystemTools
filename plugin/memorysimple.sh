@@ -19,11 +19,9 @@ if [ "$swaptotal" -gt 0 ] ; then
 echo "swap:	$swaptotal kB	$swapused kB	$swapfree kB"
 echo ""
 echo "The avbl memory for applications = $avblmemorywswap kB"
-echo "Why? please google linux help "
 else
 echo ""
 echo "The avbl memory for applications = $avblmemory kB"
-echo "Why? please google linux help "
 fi
 echo ""
 

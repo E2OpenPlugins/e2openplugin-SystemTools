@@ -19,7 +19,7 @@ from Components.Pixmap import Pixmap
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigElement
 from Components.ConfigList import ConfigList
-from Tools.Directories import fileExists
+from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS, pathExists
 from SystemToolsConsole import ConsoleBox, SystemToolsConsole
 from Components.MultiContent import MultiContentEntryText
 import os
@@ -263,8 +263,11 @@ class SystemToolsInf(Screen):
 		
 		if returnValue is not None:
 			if returnValue is "com_infone":
-				self.prombt("sh /usr/lib/enigma2/python/Plugins/Extensions/SystemTools/memorysimple.sh")
-				
+				memscriptfile = "sh "
+				memscriptfile += resolveFilename(SCOPE_PLUGINS)
+				memscriptfile += "/Extensions/SystemTools/memorysimple.sh"
+				self.prombt(memscriptfile)
+								
 			elif returnValue is "com_inftwo":
 				self.prombtbox("list_smargo")
 					
@@ -470,12 +473,17 @@ class SystemToolsSwap(Screen):
 			self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 			self.mbox.close()
 		else:
-			os.system('sleep 1')
-			os.system('dd if=/dev/zero of=/media/cf/swapfile bs=1048576 count=64; mkswap /media/cf/swapfile')
-			os.system('sleep 1')
-			msg = _("Done! You can now activate the SWAP on CF")
-			self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
-			self.mbox.close()
+			if pathExists("/media/cf"):
+				os.system('sleep 1')
+				os.system('dd if=/dev/zero of=/media/cf/swapfile bs=1048576 count=128; mkswap /media/cf/swapfile')
+				os.system('sleep 1')
+				msg = _("Done! You can now activate the SWAP on CF")
+				self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
+				self.mbox.close()
+			else:
+				msg = _("No compact flash mounted on /media/cf")
+				self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
+				self.mbox.close()
 
 	def createswaphdd(self):
 		self.activityTimer.stop()
@@ -485,12 +493,17 @@ class SystemToolsSwap(Screen):
 			self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 			self.mbox.close()
 		else:
-			os.system('sleep 1')
-			os.system('dd if=/dev/zero of=/media/hdd/swapfile bs=1048576 count=64; mkswap /media/hdd/swapfile')
-			os.system('sleep 1')
-			msg = _("Done! You can now activate the SWAP on HDD")
-			self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
-			self.mbox.close()
+			if pathExists("/media/hdd"):
+				os.system('sleep 1')
+				os.system('dd if=/dev/zero of=/media/hdd/swapfile bs=1048576 count=128; mkswap /media/hdd/swapfile')
+				os.system('sleep 1')
+				msg = _("Done! You can now activate the SWAP on HDD")
+				self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
+				self.mbox.close()
+			else:
+				msg = _("No hard drive mounted on /media/hdd")
+				self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
+				self.mbox.close()				
 
 	def createswapusb(self):
 		self.activityTimer.stop()
@@ -500,12 +513,17 @@ class SystemToolsSwap(Screen):
 			self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 			self.mbox.close()
 		else:
-			os.system('sleep 1')
-			os.system('dd if=/dev/zero of=/media/usb/swapfile bs=1048576 count=256; mkswap /media/usb/swapfile')
-			os.system('sleep 1')
-			msg = _("Done! You can now activate the SWAP on USB")
-			self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
-			self.mbox.close()
+			if pathExists("/media/usb"):
+				os.system('sleep 1')
+				os.system('dd if=/dev/zero of=/media/usb/swapfile bs=1048576 count=128; mkswap /media/usb/swapfile')
+				os.system('sleep 1')
+				msg = _("Done! You can now activate the SWAP on USB")
+				self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
+				self.mbox.close()
+			else:
+				msg = _("No usb stick mounted on /media/usb")
+				self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
+				self.mbox.close()
 
 	def activateswaphdd(self):
 		if fileExists("/media/hdd/swapfile"):
