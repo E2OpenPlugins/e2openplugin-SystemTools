@@ -127,6 +127,7 @@ class SystemToolsSc(Screen):
 		}, -1)
 
 		self.list.append(("Restart Aktif Softcam", "com_one"))
+		self.list.append(("Restart enigma2", "com_eight"))
 		self.list.append(("Ecm Info ", "com_two"))
 		self.list.append(("Clean Memory", "com_seven"))
 		self.list.append(("Delete Epg data CAUTION RESTARTS ENIGMA2 ", "com_six"))
@@ -171,6 +172,8 @@ class SystemToolsSc(Screen):
 				self.prombt("init 4; sleep 5; rm -rf /media/hdd/epg.dat; rm -rf /media/usb/epg.dat; rm -rf /media/usb/crossepg; rm -rf /media/hdd/crossepg; sleep 5; init 3" )
 			elif returnValue is "com_seven":
 				self.prombt("sync; echo 3 > /proc/sys/vm/drop_caches")
+			elif returnValue is "com_eight":
+				self.prombt("init 4; sleep 5; init 3")
 						
 			else:
 				print "\n[SystemToolsSc] cancel\n"
