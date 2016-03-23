@@ -126,7 +126,7 @@ class SystemToolsSc(Screen):
 			"yellow": self.KeyConfig,
 		}, -1)
 
-		self.list.append(("Restart Aktif Softcam", "com_one"))
+		self.list.append(("Restart Active Softcam", "com_one"))
 		self.list.append(("Restart enigma2", "com_eight"))
 		self.list.append(("Ecm Info ", "com_two"))
 		self.list.append(("Clean Memory", "com_seven"))
