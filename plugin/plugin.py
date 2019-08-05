@@ -44,9 +44,9 @@ class SystemToolsConfig(Screen, ConfigListScreen):
 	skin = """
 	<screen name="SystemToolsConfig" position="center,center" size="670,522" title="SystemToolsConfig to activate some changes restart enigma">
 		<widget name="config" position="10,10" size="650,466" scrollbarMode="showOnDemand" />
-		<ePixmap pixmap="skin_default/buttons/red.png" position="130,482" size="140,40" alphatest="on" />
+		<ePixmap pixmap="buttons/red.png" position="130,482" size="140,40" alphatest="on" />
 		<widget name="key_red" position="130,482" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="red" transparent="1" />
-		<ePixmap position="400,482" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
+		<ePixmap position="400,482" size="140,40" pixmap="buttons/green.png" alphatest="on" zPosition="1" />
 		<widget name="key_green" position="400,482" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
 	</screen>"""
 
@@ -96,11 +96,11 @@ class SystemToolsSc(Screen):
 	skin = """
 	<screen name="SystemToolsSc" position="center,center" size="670,522" title="System Tools Main Menu">
 		<widget name="entries" position="10,10" size="650,466" itemHeight="45" scrollbarMode="showOnDemand" />
-		<ePixmap pixmap="skin_default/buttons/red.png" position="62,482" size="140,40" alphatest="on" />
+		<ePixmap pixmap="buttons/red.png" position="62,482" size="140,40" alphatest="on" />
 		<widget name="key_red" position="62,482" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="red" transparent="1" />
-		<ePixmap position="265,482" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
+		<ePixmap position="265,482" size="140,40" pixmap="buttons/green.png" alphatest="on" zPosition="1" />
 		<widget name="key_green" position="265,482" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
-		<ePixmap position="468,482" size="140,40" pixmap="skin_default/buttons/yellow.png" alphatest="on" zPosition="1" />
+		<ePixmap position="468,482" size="140,40" pixmap="buttons/yellow.png" alphatest="on" zPosition="1" />
 		<widget name="key_yellow" position="468,482" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="yellow" transparent="1" />
 	</screen>"""
 
@@ -225,9 +225,9 @@ class SystemToolsInf(Screen):
 	skin = """
 	<screen name="SystemToolsInf" position="center,center" size="670,522" title="System Tools Information Menu">
 		<widget name="entries" position="10,10" size="650,466" itemHeight="45" scrollbarMode="showOnDemand" />
-		<ePixmap pixmap="skin_default/buttons/red.png" position="130,482" size="140,40" alphatest="on" />
+		<ePixmap pixmap="buttons/red.png" position="130,482" size="140,40" alphatest="on" />
 		<widget name="key_red" position="130,482" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="red" transparent="1" />
-		<ePixmap position="400,482" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
+		<ePixmap position="400,482" size="140,40" pixmap="buttons/green.png" alphatest="on" zPosition="1" />
 		<widget name="key_green" position="400,482" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
 	</screen>"""
 
@@ -347,9 +347,9 @@ class SystemToolsSwap(Screen):
 	skin = """
 	<screen name="SystemToolsSwap" position="center,center" size="670,522" title="Swap file Tools Menu">
 		<widget name="entries" position="10,10" size="650,466" itemHeight="45" scrollbarMode="showOnDemand" />
-		<ePixmap pixmap="skin_default/buttons/red.png" position="130,482" size="140,40" alphatest="on" />
+		<ePixmap pixmap="buttons/red.png" position="130,482" size="140,40" alphatest="on" />
 		<widget name="key_red" position="130,482" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="red" transparent="1" />
-		<ePixmap position="400,482" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
+		<ePixmap position="400,482" size="140,40" pixmap="buttons/green.png" alphatest="on" zPosition="1" />
 		<widget name="key_green" position="400,482" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
 	</screen>"""
 
