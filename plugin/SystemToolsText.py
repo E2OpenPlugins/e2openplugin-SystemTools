@@ -11,9 +11,9 @@ class SystemToolsTextBox(Screen):
 	skin = """
 	<screen name="SystemToolsTextBox" position="center,center" size="700,576" title="System Tools Text Box">
 		<widget name="text" position="10,10" font="Console;20" size="680,520" />
-		<ePixmap pixmap="buttons/red.png" position="140,536" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/red.png" position="140,536" size="140,40" alphatest="on" />
 		<widget name="key_red" position="140,536" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="red" transparent="1" />
-		<ePixmap position="420,536" size="140,40" pixmap="buttons/green.png" alphatest="on" zPosition="1" />
+		<ePixmap position="420,536" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
 		<widget name="key_green" position="420,536" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
 	</screen>"""
 	def __init__(self, session, text = "", title = ""):
@@ -51,9 +51,9 @@ class SystemToolsTextBox2(Screen):
 	skin = """
 	<screen name="SystemToolsTextBox2" position="center,center" size="1024,576" title="System Tools Text Box">
 		<widget name="text" position="10,10" size="1004,520" font="Console;22" />
-		<ePixmap pixmap="buttons/red.png" position="248,536" size="140,40" alphatest="on" />
+		<ePixmap pixmap="skin_default/buttons/red.png" position="248,536" size="140,40" alphatest="on" />
 		<widget name="key_red" position="248,536" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="red" transparent="1" />
-		<ePixmap position="636,536" size="140,40" pixmap="buttons/green.png" alphatest="on" zPosition="1" />
+		<ePixmap position="636,536" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
 		<widget name="key_green" position="636,536" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
 	</screen>"""
 	def __init__(self, session, text = "", title = ""):
