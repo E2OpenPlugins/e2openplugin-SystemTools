@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+from __future__ import print_function
 # System Tools e2plugin
 # This Tools are made To have system tools Integrated into skin.
 # For prober skin integration, skin.xml needs to be adapted to have the screens fit into it.
@@ -10,7 +12,7 @@
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from Screens.TextBox import TextBox
-from SystemToolsText import SystemToolsTextBox, SystemToolsTextBox2, SystemToolsTextBoxEcm
+from .SystemToolsText import SystemToolsTextBox, SystemToolsTextBox2, SystemToolsTextBoxEcm
 from Components.MenuList import MenuList
 from Components.ActionMap import ActionMap
 from Plugins.Plugin import PluginDescriptor
@@ -20,7 +22,7 @@ from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigElement
 from Components.ConfigList import ConfigList
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS, pathExists
-from SystemToolsConsole import ConsoleBox, SystemToolsConsole
+from .SystemToolsConsole import ConsoleBox, SystemToolsConsole
 from Components.MultiContent import MultiContentEntryText
 import os
 from enigma import eTimer, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, gFont, gRGB, eListboxPythonMultiContent
@@ -34,7 +36,7 @@ config.SystemTools.setupmenu = ConfigYesNo(default=False)
 
 #global vars#################################################################
 entrylist = []
-lengthList = [0,0,0,0]
+lengthList = [0, 0, 0, 0]
 
 
 ###########################################################################
@@ -147,7 +149,7 @@ class SystemToolsSc(Screen):
 				
 	def go(self):
 		returnValue = self["entries"].l.getCurrentSelection()[1]
-		print "\n[SystemToolsSc] returnValue: " + returnValue + "\n"
+		print("\n[SystemToolsSc] returnValue: " + returnValue + "\n")
 		
 		if returnValue is not None:
 			if returnValue is "com_one":
@@ -176,14 +178,14 @@ class SystemToolsSc(Screen):
 				self.prombt("init 4; sleep 5; init 3")
 						
 			else:
-				print "\n[SystemToolsSc] cancel\n"
+				print("\n[SystemToolsSc] cancel\n")
 				self.close(None)
 
 	def prombt(self, com):
-		self.session.open(SystemToolsConsole,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(SystemToolsConsole, _("start shell com: %s") % (com), ["%s" % com])
 
 	def prombtbox(self, com):	
-		self.session.open(ConsoleBox,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(ConsoleBox, _("start shell com: %s") % (com), ["%s" % com])
 
 	def SoftcamRestart(self):
 		self.activityTimer.stop()
@@ -218,7 +220,7 @@ class SystemToolsSc(Screen):
 		self.session.open(SystemToolsSwap)
 
 	def cancel(self):
-		print "\n[SystemToolsSc] cancel\n"
+		print("\n[SystemToolsSc] cancel\n")
 		self.close(None)
 
 class SystemToolsInf(Screen):
@@ -262,7 +264,7 @@ class SystemToolsInf(Screen):
 
 	def go(self):
 		returnValue = self["entries"].l.getCurrentSelection()[1]
-		print "\n[SystemToolsInf] returnValue: " + returnValue + "\n"
+		print("\n[SystemToolsInf] returnValue: " + returnValue + "\n")
 		
 		if returnValue is not None:
 			if returnValue is "com_infone":
@@ -298,7 +300,7 @@ class SystemToolsInf(Screen):
 				self.prombt("cat /proc/meminfo")
 
 			else:
-				print "\n[SystemToolsInf] cancel\n"
+				print("\n[SystemToolsInf] cancel\n")
 				self.close(None)
 
 	def mountedDevInf(self):
@@ -330,17 +332,17 @@ class SystemToolsInf(Screen):
 		return msg
 
 	def prombt(self, com):
-		self.session.open(SystemToolsConsole,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(SystemToolsConsole, _("start shell com: %s") % (com), ["%s" % com])
 
 	def prombtbox(self, com):	
-		self.session.open(ConsoleBox,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(ConsoleBox, _("start shell com: %s") % (com), ["%s" % com])
 
 	
 	def setWindowTitle(self):
 		self.setTitle(self.name)
 	
 	def cancel(self):
-		print "\n[SystemToolsInf] cancel\n"
+		print("\n[SystemToolsInf] cancel\n")
 		self.close(None)
 
 class SystemToolsSwap(Screen):
@@ -385,7 +387,7 @@ class SystemToolsSwap(Screen):
 
 	def go(self):
 		returnValue = self["entries"].l.getCurrentSelection()[1]
-		print "\n[SystemToolsSwap] returnValue: " + returnValue + "\n"
+		print("\n[SystemToolsSwap] returnValue: " + returnValue + "\n")
 		
 		if returnValue is not None:
 			if returnValue is "com_swapone":
@@ -429,7 +431,7 @@ class SystemToolsSwap(Screen):
 				os.system("swapoff -a; sed -i '\/swapfile/d' /etc/fstab")
 					
 			else:
-				print "\n[SystemToolsSwap] cancel\n"
+				print("\n[SystemToolsSwap] cancel\n")
 				self.close(None)
 
 	def readFile(self, filename):
@@ -559,24 +561,24 @@ class SystemToolsSwap(Screen):
 			self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 			
 	def prombt(self, com):
-		self.session.open(Console,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(Console, _("start shell com: %s") % (com), ["%s" % com])
 
 	def prombtbox(self, com):	
-		self.session.open(ConsoleBox,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(ConsoleBox, _("start shell com: %s") % (com), ["%s" % com])
 
 	
 	def setWindowTitle(self):
 		self.setTitle(self.name)
 	
 	def cancel(self):
-		print "\n[SystemToolsSwap] cancel\n"
+		print("\n[SystemToolsSwap] cancel\n")
 		self.close()
 
 ###########################################################################
 
 
 def main(session, **kwargs):
-	print "\n[SystemToolsSc] start\n"	
+	print("\n[SystemToolsSc] start\n")	
 	session.open(SystemToolsSc)
 
 
