@@ -152,29 +152,29 @@ class SystemToolsSc(Screen):
 		print("\n[SystemToolsSc] returnValue: " + returnValue + "\n")
 		
 		if returnValue is not None:
-			if returnValue is "com_one":
+			if returnValue == "com_one":
 				msg = _("Please wait, restarting softcam")
 				self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 				self.activityTimer = eTimer()
 				self.activityTimer.timeout.get().append(self.SoftcamRestart)
 				self.activityTimer.start(300, False)
 
-			elif returnValue is "com_two":
+			elif returnValue == "com_two":
 				msg = self.EcmInfo()
 				title = "Ecm Info"
 				self.session.open(SystemToolsTextBox, msg, title)
 
-			elif returnValue is "com_four":
+			elif returnValue == "com_four":
 				self.swap()
 
-			elif returnValue is "com_five":
+			elif returnValue == "com_five":
 				self.info() 
 
-			elif returnValue is "com_six":
+			elif returnValue == "com_six":
 				self.prombt("init 4; sleep 5; rm -rf /media/hdd/epg.dat; rm -rf /media/usb/epg.dat; rm -rf /media/usb/crossepg; rm -rf /media/hdd/crossepg; sleep 5; init 3" )
-			elif returnValue is "com_seven":
+			elif returnValue == "com_seven":
 				self.prombt("sync; echo 3 > /proc/sys/vm/drop_caches")
-			elif returnValue is "com_eight":
+			elif returnValue == "com_eight":
 				self.prombt("init 4; sleep 5; init 3")
 						
 			else:
@@ -267,36 +267,36 @@ class SystemToolsInf(Screen):
 		print("\n[SystemToolsInf] returnValue: " + returnValue + "\n")
 		
 		if returnValue is not None:
-			if returnValue is "com_infone":
+			if returnValue == "com_infone":
 				memscriptfile = "sh "
 				memscriptfile += resolveFilename(SCOPE_PLUGINS)
 				memscriptfile += "/Extensions/SystemTools/memorysimple.sh"
 				self.prombt(memscriptfile)
 								
-			elif returnValue is "com_inftwo":
+			elif returnValue == "com_inftwo":
 				self.prombtbox("list_smargo")
 					
-			elif returnValue is "com_inftree":
+			elif returnValue == "com_inftree":
 				title = "Mounted Devices"
 				msg = self.mountedDevInf()
 				self.session.open(SystemToolsTextBox, msg, title)
 
-			elif returnValue is "com_inffour":
+			elif returnValue == "com_inffour":
 				title = "Sorage Devices Information"
 				msg = self.scsiDev()
 				self.session.open(SystemToolsTextBox2, msg, title)
 
-			elif returnValue is "com_inffive":
+			elif returnValue == "com_inffive":
 				title = "Cpu Information"
 				msg = self.cpuInf()
 				self.session.open(SystemToolsTextBox, msg, title)
 
-			elif returnValue is "com_infsix":
+			elif returnValue == "com_infsix":
 				title = "Linux and Gcc Version"
 				msg = self.lingccInf()
 				self.session.open(SystemToolsTextBox, msg, title)
 
-			elif returnValue is "com_infseven":
+			elif returnValue == "com_infseven":
 				self.prombt("cat /proc/meminfo")
 
 			else:
@@ -390,42 +390,42 @@ class SystemToolsSwap(Screen):
 		print("\n[SystemToolsSwap] returnValue: " + returnValue + "\n")
 		
 		if returnValue is not None:
-			if returnValue is "com_swapone":
+			if returnValue == "com_swapone":
 				title = "Aktif Swap"
 				msg = self.aktswapscreen()
 				self.session.open(SystemToolsTextBox, msg, title)
 				
-			elif returnValue is "com_swaptwo":
+			elif returnValue == "com_swaptwo":
 				msg = _("Please wait : Creating swap File on hdd")
 				self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 				self.activityTimer = eTimer()
 				self.activityTimer.timeout.get().append(self.createswaphdd)				
 				self.activityTimer.start(100, False)
 
-			elif returnValue is "com_swaptree":
+			elif returnValue == "com_swaptree":
 				msg = _("Please wait : Creating swap File on cf")
 				self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 				self.activityTimer = eTimer()
 				self.activityTimer.timeout.get().append(self.createswapcf)				
 				self.activityTimer.start(100, False)
 				
-			elif returnValue is "com_swapfour":
+			elif returnValue == "com_swapfour":
 				msg = _("Please wait : Creating swap File on usb")
 				self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 				self.activityTimer = eTimer()
 				self.activityTimer.timeout.get().append(self.createswapusb)				
 				self.activityTimer.start(100, False)
 
-			elif returnValue is "com_swapsix":
+			elif returnValue == "com_swapsix":
 				self.activateswaphdd()
 				
-			elif returnValue is "com_swapseven":
+			elif returnValue == "com_swapseven":
 				self.activateswapcf()
 				
-			elif returnValue is "com_swapeight":
+			elif returnValue == "com_swapeight":
 				self.activateswapusb()
 				
-			elif returnValue is "com_swapten":
+			elif returnValue == "com_swapten":
 				msg = _("Swap is De-activated")
 				self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 				os.system("swapoff -a; sed -i '\/swapfile/d' /etc/fstab")
