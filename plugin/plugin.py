@@ -169,7 +169,7 @@ class SystemToolsSc(Screen):
 				self.info() 
 
 			elif returnValue is "com_six":
-				self.prombt("init 4; sleep 5; rm -rf /media/hdd/epg.dat; rm -rf /media/usb/epg.dat; rm -rf /media/usb/crossepg; rm -rf /media/hdd/crossepg; sleep 5; init 3" )
+				self.prombt("init 4; sleep 5; rm -rf /media/hdd/epg.dat; rm -rf /media/usb/epg.dat; rm -rf /media/usb/crossepg; rm -rf /media/hdd/crossepg; sleep 5; init 3")
 			elif returnValue is "com_seven":
 				self.prombt("sync; echo 3 > /proc/sys/vm/drop_caches")
 			elif returnValue is "com_eight":
@@ -203,7 +203,7 @@ class SystemToolsSc(Screen):
 
 	def EcmInfo(self):
 		if fileExists("/tmp/ecm.info"):
-			ecm = open ("/tmp/ecm.info")			
+			ecm = open("/tmp/ecm.info")			
 			msg = ecm.read()
 			ecm.close()
 			return msg
@@ -581,20 +581,20 @@ def main(session, **kwargs):
 
 
 def menu(menuid, **kwargs):
-	if menuid == "mainmenu" and config.SystemTools.mainmenu.value == True :
+	if menuid == "mainmenu" and config.SystemTools.mainmenu.value == True:
 		return [(_("System Tools"), main, "tools_setup", 45)]
 	
-	if menuid == "system" and config.SystemTools.systemmenu.value == True :
+	if menuid == "system" and config.SystemTools.systemmenu.value == True:
 		return [(_("System Tools"), main, "tools_setup", 45)]
 
-	if menuid == "setup" and config.SystemTools.setupmenu.value == True :
+	if menuid == "setup" and config.SystemTools.setupmenu.value == True:
 		return [(_("System Tools"), main, "tools_setup", 45)]
 
 	return []
 ###########################################################################
 
 def Plugins(**kwargs):
-	if config.SystemTools.applicationmenu.value == True :
+	if config.SystemTools.applicationmenu.value == True:
 		return [PluginDescriptor(name="System Tools", description="basic toolsmenu", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main),
 			PluginDescriptor(name="System Tools", description="basic toolsmenu", where=PluginDescriptor.WHERE_MENU, fnc=menu),
 			PluginDescriptor(name="System Tools", description="basic toolsmenu", where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main)]
