@@ -54,7 +54,7 @@ class ConsoleBox(Screen):
 				self.runFinished(-1) # so we must call runFinished manual
 		else:
 			str = self["text"].getText()
-			str += _("Execution finished!!");
+			str += _("Execution finished!!")
 			self["text"].setText(str)
 			self["text"].lastPage()
 			if self.finishedCallback is not None:
@@ -122,7 +122,7 @@ class SystemToolsConsole(Screen):
 				self.runFinished(-1) # so we must call runFinished manual
 		else:
 			str = self["text"].getText()
-			str += _("Execution finished!!");
+			str += _("Execution finished!!")
 			self["text"].setText(str)
 			self["text"].lastPage()
 			if self.finishedCallback is not None:
