@@ -3,35 +3,36 @@ from Screens.Screen import Screen
 from Components.ActionMap import ActionMap
 from Components.ScrollLabel import ScrollLabel
 
+
 class ConsoleBox(Screen):
 	#TODO move this to skin.xml
 	skin = """
 		<screen position="center,center" size="1220,640" title="Command execution..." >
 			<widget name="text" position="5,5" size="1210,620" font="Console;20" />
 		</screen>"""
-		
-	def __init__(self, session, title = "ConsoleBox", cmdlist = None, finishedCallback = None, closeOnSuccess = False):
+
+	def __init__(self, session, title="ConsoleBox", cmdlist=None, finishedCallback=None, closeOnSuccess=False):
 		Screen.__init__(self, session)
 
 		self.finishedCallback = finishedCallback
 		self.closeOnSuccess = closeOnSuccess
 
 		self["text"] = ScrollLabel("")
-		self["actions"] = ActionMap(["WizardActions", "DirectionActions", "ColorActions"], 
+		self["actions"] = ActionMap(["WizardActions", "DirectionActions", "ColorActions"],
 		{
 			"ok": self.cancel,
 			"back": self.cancel,
 			"up": self["text"].pageUp,
 			"down": self["text"].pageDown,
-			"red": self.cancel,			
+			"red": self.cancel,
 			"green": self.cancel
 		}, -1)
-		
+
 		self.cmdlist = cmdlist
 		self.newtitle = title
-		
+
 		self.onShown.append(self.updateTitle)
-		
+
 		self.container = eConsoleAppContainer()
 		self.run = 0
 		self.container.appClosed.append(self.runFinished)
@@ -54,7 +55,7 @@ class ConsoleBox(Screen):
 				self.runFinished(-1) # so we must call runFinished manual
 		else:
 			str = self["text"].getText()
-			str += _("Execution finished!!");
+			str += _("Execution finished!!")
 			self["text"].setText(str)
 			self["text"].lastPage()
 			if self.finishedCallback is not None:
@@ -71,35 +72,36 @@ class ConsoleBox(Screen):
 	def dataAvail(self, str):
 		self["text"].setText(self["text"].getText() + str)
 
+
 class SystemToolsConsole(Screen):
 	#TODO move this to skin.xml
 	skin = """
 		<screen position="center,center" size="1220,640" title="Command execution..." >
 			<widget name="text" position="5,5" size="1210,620" font="Console;20" />
 		</screen>"""
-		
-	def __init__(self, session, title = "ConsoleBox", cmdlist = None, finishedCallback = None, closeOnSuccess = False):
+
+	def __init__(self, session, title="ConsoleBox", cmdlist=None, finishedCallback=None, closeOnSuccess=False):
 		Screen.__init__(self, session)
 
 		self.finishedCallback = finishedCallback
 		self.closeOnSuccess = closeOnSuccess
 
 		self["text"] = ScrollLabel("")
-		self["actions"] = ActionMap(["WizardActions", "DirectionActions", "ColorActions"], 
+		self["actions"] = ActionMap(["WizardActions", "DirectionActions", "ColorActions"],
 		{
 			"ok": self.cancel,
 			"back": self.cancel,
 			"up": self["text"].pageUp,
 			"down": self["text"].pageDown,
-			"red": self.cancel,			
+			"red": self.cancel,
 			"green": self.cancel
 		}, -1)
-		
+
 		self.cmdlist = cmdlist
 		self.newtitle = title
-		
+
 		self.onShown.append(self.updateTitle)
-		
+
 		self.container = eConsoleAppContainer()
 		self.run = 0
 		self.container.appClosed.append(self.runFinished)
@@ -122,7 +124,7 @@ class SystemToolsConsole(Screen):
 				self.runFinished(-1) # so we must call runFinished manual
 		else:
 			str = self["text"].getText()
-			str += _("Execution finished!!");
+			str += _("Execution finished!!")
 			self["text"].setText(str)
 			self["text"].lastPage()
 			if self.finishedCallback is not None:

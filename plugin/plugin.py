@@ -34,7 +34,7 @@ config.SystemTools.setupmenu = ConfigYesNo(default=False)
 
 #global vars#################################################################
 entrylist = []
-lengthList = [0,0,0,0]
+lengthList = [0, 0, 0, 0]
 
 
 ###########################################################################
@@ -51,17 +51,17 @@ class SystemToolsConfig(Screen, ConfigListScreen):
 	</screen>"""
 
 	def __init__(self, session):
-		self.skin = SystemToolsConfig.skin			
+		self.skin = SystemToolsConfig.skin
 		Screen.__init__(self, session)
 		self.list = []
 
 		ConfigListScreen.__init__(self, self.list)
 		self.name = "SystemToolsConfig to activate some changes restart enigma"
 		self.onShown.append(self.setWindowTitle)
-	
+
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("Save"))
-				
+
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"],
 		{
 			"red": self.keyCancel,
@@ -74,7 +74,7 @@ class SystemToolsConfig(Screen, ConfigListScreen):
 		self.list.append(getConfigListEntry(_("Show SystemTools in System menu"), config.SystemTools.systemmenu))
 		self.list.append(getConfigListEntry(_("Show SystemTools in Setup menu"), config.SystemTools.setupmenu))
 		self.list.append(getConfigListEntry(_("Show SystemTools in Plugin menu restart enigma to activate"), config.SystemTools.applicationmenu))
-	
+
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
 
@@ -85,11 +85,11 @@ class SystemToolsConfig(Screen, ConfigListScreen):
 		for x in self["config"].list:
 			x[1].save()
 		self.close()
-		
+
 	def keyCancel(self):
 		for x in self["config"].list:
 			x[1].cancel()
-		self.close()	
+		self.close()
 
 
 class SystemToolsSc(Screen):
@@ -109,19 +109,19 @@ class SystemToolsSc(Screen):
 		Screen.__init__(self, session)
 		#self.ListEntry = []
 		self.list = []
-						
+
 		self.name = "System Tools Main Menu"
 		self.onShown.append(self.setWindowTitle)
-			
+
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("OK"))
 		self["key_yellow"] = Label(_("Configure"))
-		
+
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"],
 		{
 			"ok": self.go,
 			"cancel": self.cancel,
-			"red": self.cancel,			
+			"red": self.cancel,
 			"green": self.go,
 			"yellow": self.KeyConfig,
 		}, -1)
@@ -134,21 +134,19 @@ class SystemToolsSc(Screen):
 		self.list.append(("Menu Swap File Tools", "com_four"))
 		self.list.append(("Menu System Information Tools ", "com_five"))
 		self.list.append((_("Exit"), "exit"))
-					
+
 		self["entries"] = MenuList(self.list)
-		
-						
+
 	def setWindowTitle(self):
 		self.setTitle(self.name)
 
 	def KeyConfig(self):
-		self.session.open(SystemToolsConfig) 
+		self.session.open(SystemToolsConfig)
 
-				
 	def go(self):
 		returnValue = self["entries"].l.getCurrentSelection()[1]
 		print "\n[SystemToolsSc] returnValue: " + returnValue + "\n"
-		
+
 		if returnValue is not None:
 			if returnValue is "com_one":
 				msg = _("Please wait, restarting softcam")
@@ -166,24 +164,24 @@ class SystemToolsSc(Screen):
 				self.swap()
 
 			elif returnValue is "com_five":
-				self.info() 
+				self.info()
 
 			elif returnValue is "com_six":
-				self.prombt("init 4; sleep 5; rm -rf /media/hdd/epg.dat; rm -rf /media/usb/epg.dat; rm -rf /media/usb/crossepg; rm -rf /media/hdd/crossepg; sleep 5; init 3" )
+				self.prombt("init 4; sleep 5; rm -rf /media/hdd/epg.dat; rm -rf /media/usb/epg.dat; rm -rf /media/usb/crossepg; rm -rf /media/hdd/crossepg; sleep 5; init 3")
 			elif returnValue is "com_seven":
 				self.prombt("sync; echo 3 > /proc/sys/vm/drop_caches")
 			elif returnValue is "com_eight":
 				self.prombt("init 4; sleep 5; init 3")
-						
+
 			else:
 				print "\n[SystemToolsSc] cancel\n"
 				self.close(None)
 
 	def prombt(self, com):
-		self.session.open(SystemToolsConsole,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(SystemToolsConsole, _("start shell com: %s") % (com), ["%s" % com])
 
-	def prombtbox(self, com):	
-		self.session.open(ConsoleBox,_("start shell com: %s") % (com), ["%s" % com])
+	def prombtbox(self, com):
+		self.session.open(ConsoleBox, _("start shell com: %s") % (com), ["%s" % com])
 
 	def SoftcamRestart(self):
 		self.activityTimer.stop()
@@ -203,14 +201,14 @@ class SystemToolsSc(Screen):
 
 	def EcmInfo(self):
 		if fileExists("/tmp/ecm.info"):
-			ecm = open ("/tmp/ecm.info")			
+			ecm = open("/tmp/ecm.info")
 			msg = ecm.read()
 			ecm.close()
 			return msg
 		else:
 			msg = "Your Are watching FTA Channel or\n ecm.info file is missing."
 			return msg
-							
+
 	def info(self):
 		self.session.open(SystemToolsInf)
 
@@ -220,6 +218,7 @@ class SystemToolsSc(Screen):
 	def cancel(self):
 		print "\n[SystemToolsSc] cancel\n"
 		self.close(None)
+
 
 class SystemToolsInf(Screen):
 	skin = """
@@ -235,20 +234,20 @@ class SystemToolsInf(Screen):
 		self.skin = SystemToolsInf.skin
 		Screen.__init__(self, session)
 		self.list = []
-		
+
 		self.name = "System Tools Information Menu"
 		self.onShown.append(self.setWindowTitle)
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("OK"))
-				
+
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"],
 		{
 			"ok": self.go,
 			"cancel": self.cancel,
-			"red": self.cancel,			
+			"red": self.cancel,
 			"green": self.go,
 		}, -1)
-		
+
 		self.list.append(("  Memory info simple", "com_infone"))
 		self.list.append(("  Memory info list", "com_infseven"))
 		self.list.append(("  Smartreader Info", "com_inftwo"))
@@ -263,17 +262,17 @@ class SystemToolsInf(Screen):
 	def go(self):
 		returnValue = self["entries"].l.getCurrentSelection()[1]
 		print "\n[SystemToolsInf] returnValue: " + returnValue + "\n"
-		
+
 		if returnValue is not None:
 			if returnValue is "com_infone":
 				memscriptfile = "sh "
 				memscriptfile += resolveFilename(SCOPE_PLUGINS)
 				memscriptfile += "/Extensions/SystemTools/memorysimple.sh"
 				self.prombt(memscriptfile)
-								
+
 			elif returnValue is "com_inftwo":
 				self.prombtbox("list_smargo")
-					
+
 			elif returnValue is "com_inftree":
 				title = "Mounted Devices"
 				msg = self.mountedDevInf()
@@ -313,7 +312,7 @@ class SystemToolsInf(Screen):
 		lingccinf.close()
 		return msg
 
-	def cpuInf(self): 
+	def cpuInf(self):
 		cpuinfentrylist = []
 		cpuinf = open("/proc/cpuinfo", "r")
 		for line in cpuinf:
@@ -330,18 +329,18 @@ class SystemToolsInf(Screen):
 		return msg
 
 	def prombt(self, com):
-		self.session.open(SystemToolsConsole,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(SystemToolsConsole, _("start shell com: %s") % (com), ["%s" % com])
 
-	def prombtbox(self, com):	
-		self.session.open(ConsoleBox,_("start shell com: %s") % (com), ["%s" % com])
+	def prombtbox(self, com):
+		self.session.open(ConsoleBox, _("start shell com: %s") % (com), ["%s" % com])
 
-	
 	def setWindowTitle(self):
 		self.setTitle(self.name)
-	
+
 	def cancel(self):
 		print "\n[SystemToolsInf] cancel\n"
 		self.close(None)
+
 
 class SystemToolsSwap(Screen):
 	skin = """
@@ -357,20 +356,20 @@ class SystemToolsSwap(Screen):
 		self.skin = SystemToolsSwap.skin
 		Screen.__init__(self, session)
 		self.list = []
-		
+
 		self.name = "Swap File Tools Menu"
 		self.onShown.append(self.setWindowTitle)
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("OK"))
-				
+
 		self["actions"] = ActionMap(["OkCancelActions", "WizardActions", "ColorActions"],
 		{
 			"ok": self.go,
 			"cancel": self.cancel,
-			"red": self.cancel,			
+			"red": self.cancel,
 			"green": self.go,
 		}, -1)
-		
+
 		self.list.append(("  Show Aktif Swap", "com_swapone"))
 		self.list.append(("  De-activate Swap", "com_swapten"))
 		self.list.append(("  Create swap file on hdd", "com_swaptwo"))
@@ -386,48 +385,48 @@ class SystemToolsSwap(Screen):
 	def go(self):
 		returnValue = self["entries"].l.getCurrentSelection()[1]
 		print "\n[SystemToolsSwap] returnValue: " + returnValue + "\n"
-		
+
 		if returnValue is not None:
 			if returnValue is "com_swapone":
 				title = "Aktif Swap"
 				msg = self.aktswapscreen()
 				self.session.open(SystemToolsTextBox, msg, title)
-				
+
 			elif returnValue is "com_swaptwo":
 				msg = _("Please wait : Creating swap File on hdd")
 				self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 				self.activityTimer = eTimer()
-				self.activityTimer.timeout.get().append(self.createswaphdd)				
+				self.activityTimer.timeout.get().append(self.createswaphdd)
 				self.activityTimer.start(100, False)
 
 			elif returnValue is "com_swaptree":
 				msg = _("Please wait : Creating swap File on cf")
 				self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 				self.activityTimer = eTimer()
-				self.activityTimer.timeout.get().append(self.createswapcf)				
+				self.activityTimer.timeout.get().append(self.createswapcf)
 				self.activityTimer.start(100, False)
-				
+
 			elif returnValue is "com_swapfour":
 				msg = _("Please wait : Creating swap File on usb")
 				self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 				self.activityTimer = eTimer()
-				self.activityTimer.timeout.get().append(self.createswapusb)				
+				self.activityTimer.timeout.get().append(self.createswapusb)
 				self.activityTimer.start(100, False)
 
 			elif returnValue is "com_swapsix":
 				self.activateswaphdd()
-				
+
 			elif returnValue is "com_swapseven":
 				self.activateswapcf()
-				
+
 			elif returnValue is "com_swapeight":
 				self.activateswapusb()
-				
+
 			elif returnValue is "com_swapten":
 				msg = _("Swap is De-activated")
 				self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 				os.system("swapoff -a; sed -i '\/swapfile/d' /etc/fstab")
-					
+
 			else:
 				print "\n[SystemToolsSwap] cancel\n"
 				self.close(None)
@@ -452,10 +451,10 @@ class SystemToolsSwap(Screen):
 						if len(entry[1]) > lengthList[1]:
 							lengthList[1] = len(entry[1])
 						if len(entry[2]) > lengthList[2]:
-							lengthList[2] = len(entry[2])					
+							lengthList[2] = len(entry[2])
 						if len(entry[3]) > lengthList[3]:
 							lengthList[3] = len(entry[3])
-						counter = counter+1
+						counter = counter + 1
 						if counter >= 2:
 							swapentrylist.append(' '.join(["Filename:", entry[0]]))
 							swapentrylist.append(' '.join(["Type    :", entry[1]]))
@@ -466,8 +465,8 @@ class SystemToolsSwap(Screen):
 			else:
 				return "Swapfile is Not Aktivated !"
 		else:
-			return "SwapFile is Not Aktif ! or /proc/swaps is missing"		
-	
+			return "SwapFile is Not Aktif ! or /proc/swaps is missing"
+
 	def createswapcf(self):
 		self.activityTimer.stop()
 		del self.activityTimer
@@ -506,7 +505,7 @@ class SystemToolsSwap(Screen):
 			else:
 				msg = _("No hard drive mounted on /media/hdd")
 				self.mbox2 = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
-				self.mbox.close()				
+				self.mbox.close()
 
 	def createswapusb(self):
 		self.activityTimer.stop()
@@ -547,7 +546,7 @@ class SystemToolsSwap(Screen):
 		else:
 			msg = ("There is no swap file found on CF. Create it first")
 			self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
-			
+
 	def activateswapusb(self):
 		if fileExists("/media/usb/swapfile"):
 			os.system("swapoff -a; sed -i '\/swapfile/d' /etc/fstab; swapon /media/usb/swapfile")
@@ -557,17 +556,16 @@ class SystemToolsSwap(Screen):
 		else:
 			msg = ("There is no swap file found on USB. Create it first")
 			self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
-			
+
 	def prombt(self, com):
-		self.session.open(Console,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(Console, _("start shell com: %s") % (com), ["%s" % com])
 
-	def prombtbox(self, com):	
-		self.session.open(ConsoleBox,_("start shell com: %s") % (com), ["%s" % com])
+	def prombtbox(self, com):
+		self.session.open(ConsoleBox, _("start shell com: %s") % (com), ["%s" % com])
 
-	
 	def setWindowTitle(self):
 		self.setTitle(self.name)
-	
+
 	def cancel(self):
 		print "\n[SystemToolsSwap] cancel\n"
 		self.close()
@@ -576,30 +574,29 @@ class SystemToolsSwap(Screen):
 
 
 def main(session, **kwargs):
-	print "\n[SystemToolsSc] start\n"	
+	print "\n[SystemToolsSc] start\n"
 	session.open(SystemToolsSc)
 
 
 def menu(menuid, **kwargs):
-	if menuid == "mainmenu" and config.SystemTools.mainmenu.value == True :
-		return [(_("System Tools"), main, "tools_setup", 45)]
-	
-	if menuid == "system" and config.SystemTools.systemmenu.value == True :
+	if menuid == "mainmenu" and config.SystemTools.mainmenu.value == True:
 		return [(_("System Tools"), main, "tools_setup", 45)]
 
-	if menuid == "setup" and config.SystemTools.setupmenu.value == True :
+	if menuid == "system" and config.SystemTools.systemmenu.value == True:
+		return [(_("System Tools"), main, "tools_setup", 45)]
+
+	if menuid == "setup" and config.SystemTools.setupmenu.value == True:
 		return [(_("System Tools"), main, "tools_setup", 45)]
 
 	return []
 ###########################################################################
 
-def Plugins(**kwargs):
-	if config.SystemTools.applicationmenu.value == True :
-		return [PluginDescriptor(name = "System Tools", description = "basic toolsmenu", where = PluginDescriptor.WHERE_PLUGINMENU, fnc = main),
-			PluginDescriptor(name = "System Tools", description = "basic toolsmenu", where = PluginDescriptor.WHERE_MENU, fnc = menu),
-			PluginDescriptor(name = "System Tools", description = "basic toolsmenu", where = PluginDescriptor.WHERE_EXTENSIONSMENU, fnc = main)]
-	
-	return [PluginDescriptor(name = "System Tools", description = "basic toolsmenu", where = PluginDescriptor.WHERE_MENU, fnc = menu),
-		PluginDescriptor(name = "System Tools", description = "basic toolsmenu", where = PluginDescriptor.WHERE_EXTENSIONSMENU, fnc = main)]
-	
 
+def Plugins(**kwargs):
+	if config.SystemTools.applicationmenu.value == True:
+		return [PluginDescriptor(name="System Tools", description="basic toolsmenu", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main),
+			PluginDescriptor(name="System Tools", description="basic toolsmenu", where=PluginDescriptor.WHERE_MENU, fnc=menu),
+			PluginDescriptor(name="System Tools", description="basic toolsmenu", where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main)]
+
+	return [PluginDescriptor(name="System Tools", description="basic toolsmenu", where=PluginDescriptor.WHERE_MENU, fnc=menu),
+		PluginDescriptor(name="System Tools", description="basic toolsmenu", where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main)]
