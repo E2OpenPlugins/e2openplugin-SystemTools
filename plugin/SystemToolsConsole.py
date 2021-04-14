@@ -10,7 +10,7 @@ class ConsoleBox(Screen):
 			<widget name="text" position="5,5" size="1210,620" font="Console;20" />
 		</screen>"""
 		
-	def __init__(self, session, title = "ConsoleBox", cmdlist = None, finishedCallback = None, closeOnSuccess = False):
+	def __init__(self, session, title="ConsoleBox", cmdlist=None, finishedCallback=None, closeOnSuccess=False):
 		Screen.__init__(self, session)
 
 		self.finishedCallback = finishedCallback
@@ -78,7 +78,7 @@ class SystemToolsConsole(Screen):
 			<widget name="text" position="5,5" size="1210,620" font="Console;20" />
 		</screen>"""
 		
-	def __init__(self, session, title = "ConsoleBox", cmdlist = None, finishedCallback = None, closeOnSuccess = False):
+	def __init__(self, session, title="ConsoleBox", cmdlist=None, finishedCallback=None, closeOnSuccess=False):
 		Screen.__init__(self, session)
 
 		self.finishedCallback = finishedCallback

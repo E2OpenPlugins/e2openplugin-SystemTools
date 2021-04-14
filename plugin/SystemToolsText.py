@@ -16,7 +16,7 @@ class SystemToolsTextBox(Screen):
 		<ePixmap position="420,536" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
 		<widget name="key_green" position="420,536" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
 	</screen>"""
-	def __init__(self, session, text = "", title = ""):
+	def __init__(self, session, text="", title=""):
 		Screen.__init__(self, session)
 		
 		self.text = text
@@ -56,7 +56,7 @@ class SystemToolsTextBox2(Screen):
 		<ePixmap position="636,536" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
 		<widget name="key_green" position="636,536" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
 	</screen>"""
-	def __init__(self, session, text = "", title = ""):
+	def __init__(self, session, text="", title=""):
 		Screen.__init__(self, session)
 		
 		self.text = text
@@ -91,7 +91,7 @@ class SystemToolsTextBoxEcm(Screen):
 	<screen name="SystemToolsTextBox" position="810,40" size="410,288" title="System Tools Text Box">
 		<widget name="text" position="10,10" size="390,268" font="Console;20" />
 	</screen>"""
-	def __init__(self, session, text = "", title = ""):
+	def __init__(self, session, text="", title=""):
 		Screen.__init__(self, session)
 		
 		self.text = text

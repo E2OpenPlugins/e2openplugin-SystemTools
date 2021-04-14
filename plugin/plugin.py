@@ -595,11 +595,11 @@ def menu(menuid, **kwargs):
 
 def Plugins(**kwargs):
 	if config.SystemTools.applicationmenu.value == True :
-		return [PluginDescriptor(name = "System Tools", description = "basic toolsmenu", where = PluginDescriptor.WHERE_PLUGINMENU, fnc = main),
-			PluginDescriptor(name = "System Tools", description = "basic toolsmenu", where = PluginDescriptor.WHERE_MENU, fnc = menu),
-			PluginDescriptor(name = "System Tools", description = "basic toolsmenu", where = PluginDescriptor.WHERE_EXTENSIONSMENU, fnc = main)]
+		return [PluginDescriptor(name="System Tools", description="basic toolsmenu", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main),
+			PluginDescriptor(name="System Tools", description="basic toolsmenu", where=PluginDescriptor.WHERE_MENU, fnc=menu),
+			PluginDescriptor(name="System Tools", description="basic toolsmenu", where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main)]
 	
-	return [PluginDescriptor(name = "System Tools", description = "basic toolsmenu", where = PluginDescriptor.WHERE_MENU, fnc = menu),
-		PluginDescriptor(name = "System Tools", description = "basic toolsmenu", where = PluginDescriptor.WHERE_EXTENSIONSMENU, fnc = main)]
+	return [PluginDescriptor(name="System Tools", description="basic toolsmenu", where=PluginDescriptor.WHERE_MENU, fnc=menu),
+		PluginDescriptor(name="System Tools", description="basic toolsmenu", where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main)]
 	
 
