@@ -137,14 +137,12 @@ class SystemToolsSc(Screen):
 					
 		self["entries"] = MenuList(self.list)
 		
-						
 	def setWindowTitle(self):
 		self.setTitle(self.name)
 
 	def KeyConfig(self):
 		self.session.open(SystemToolsConfig) 
 
-				
 	def go(self):
 		returnValue = self["entries"].l.getCurrentSelection()[1]
 		print "\n[SystemToolsSc] returnValue: " + returnValue + "\n"
@@ -220,6 +218,7 @@ class SystemToolsSc(Screen):
 	def cancel(self):
 		print "\n[SystemToolsSc] cancel\n"
 		self.close(None)
+
 
 class SystemToolsInf(Screen):
 	skin = """
@@ -335,13 +334,13 @@ class SystemToolsInf(Screen):
 	def prombtbox(self, com):	
 		self.session.open(ConsoleBox, _("start shell com: %s") % (com), ["%s" % com])
 
-	
 	def setWindowTitle(self):
 		self.setTitle(self.name)
 	
 	def cancel(self):
 		print "\n[SystemToolsInf] cancel\n"
 		self.close(None)
+
 
 class SystemToolsSwap(Screen):
 	skin = """
@@ -564,7 +563,6 @@ class SystemToolsSwap(Screen):
 	def prombtbox(self, com):	
 		self.session.open(ConsoleBox, _("start shell com: %s") % (com), ["%s" % com])
 
-	
 	def setWindowTitle(self):
 		self.setTitle(self.name)
 	
@@ -592,6 +590,7 @@ def menu(menuid, **kwargs):
 
 	return []
 ###########################################################################
+
 
 def Plugins(**kwargs):
 	if config.SystemTools.applicationmenu.value == True:

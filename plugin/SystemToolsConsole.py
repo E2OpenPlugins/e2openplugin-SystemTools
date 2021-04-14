@@ -3,6 +3,7 @@ from Screens.Screen import Screen
 from Components.ActionMap import ActionMap
 from Components.ScrollLabel import ScrollLabel
 
+
 class ConsoleBox(Screen):
 	#TODO move this to skin.xml
 	skin = """
@@ -70,6 +71,7 @@ class ConsoleBox(Screen):
 
 	def dataAvail(self, str):
 		self["text"].setText(self["text"].getText() + str)
+
 
 class SystemToolsConsole(Screen):
 	#TODO move this to skin.xml
