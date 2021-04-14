@@ -455,7 +455,7 @@ class SystemToolsSwap(Screen):
 							lengthList[2] = len(entry[2])					
 						if len(entry[3]) > lengthList[3]:
 							lengthList[3] = len(entry[3])
-						counter = counter+1
+						counter = counter + 1
 						if counter >= 2:
 							swapentrylist.append(' '.join(["Filename:", entry[0]]))
 							swapentrylist.append(' '.join(["Type    :", entry[1]]))
