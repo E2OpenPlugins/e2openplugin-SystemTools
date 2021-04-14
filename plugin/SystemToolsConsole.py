@@ -10,7 +10,7 @@ class ConsoleBox(Screen):
 		<screen position="center,center" size="1220,640" title="Command execution..." >
 			<widget name="text" position="5,5" size="1210,620" font="Console;20" />
 		</screen>"""
-		
+
 	def __init__(self, session, title="ConsoleBox", cmdlist=None, finishedCallback=None, closeOnSuccess=False):
 		Screen.__init__(self, session)
 
@@ -18,21 +18,21 @@ class ConsoleBox(Screen):
 		self.closeOnSuccess = closeOnSuccess
 
 		self["text"] = ScrollLabel("")
-		self["actions"] = ActionMap(["WizardActions", "DirectionActions", "ColorActions"], 
+		self["actions"] = ActionMap(["WizardActions", "DirectionActions", "ColorActions"],
 		{
 			"ok": self.cancel,
 			"back": self.cancel,
 			"up": self["text"].pageUp,
 			"down": self["text"].pageDown,
-			"red": self.cancel,			
+			"red": self.cancel,
 			"green": self.cancel
 		}, -1)
-		
+
 		self.cmdlist = cmdlist
 		self.newtitle = title
-		
+
 		self.onShown.append(self.updateTitle)
-		
+
 		self.container = eConsoleAppContainer()
 		self.run = 0
 		self.container.appClosed.append(self.runFinished)
@@ -79,7 +79,7 @@ class SystemToolsConsole(Screen):
 		<screen position="center,center" size="1220,640" title="Command execution..." >
 			<widget name="text" position="5,5" size="1210,620" font="Console;20" />
 		</screen>"""
-		
+
 	def __init__(self, session, title="ConsoleBox", cmdlist=None, finishedCallback=None, closeOnSuccess=False):
 		Screen.__init__(self, session)
 
@@ -87,21 +87,21 @@ class SystemToolsConsole(Screen):
 		self.closeOnSuccess = closeOnSuccess
 
 		self["text"] = ScrollLabel("")
-		self["actions"] = ActionMap(["WizardActions", "DirectionActions", "ColorActions"], 
+		self["actions"] = ActionMap(["WizardActions", "DirectionActions", "ColorActions"],
 		{
 			"ok": self.cancel,
 			"back": self.cancel,
 			"up": self["text"].pageUp,
 			"down": self["text"].pageDown,
-			"red": self.cancel,			
+			"red": self.cancel,
 			"green": self.cancel
 		}, -1)
-		
+
 		self.cmdlist = cmdlist
 		self.newtitle = title
-		
+
 		self.onShown.append(self.updateTitle)
-		
+
 		self.container = eConsoleAppContainer()
 		self.run = 0
 		self.container.appClosed.append(self.runFinished)

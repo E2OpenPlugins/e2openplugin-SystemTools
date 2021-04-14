@@ -20,7 +20,7 @@ class SystemToolsTextBox(Screen):
 
 	def __init__(self, session, text="", title=""):
 		Screen.__init__(self, session)
-		
+
 		self.text = text
 		self.title = title
 		if title != "":
@@ -28,8 +28,8 @@ class SystemToolsTextBox(Screen):
 		self["key_red"] = Label(_("Exit"))
 		self["key_green"] = Label(_("OK"))
 		self["text"] = ScrollLabel(self.text)
-		
-		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "ColorActions"], 
+
+		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "ColorActions"],
 				{
 					"cancel": self.cancel,
 					"ok": self.ok,
@@ -41,10 +41,10 @@ class SystemToolsTextBox(Screen):
 
 	def setWindowTitle(self):
 		self.setTitle(self.title)
-		
+
 	def ok(self):
 		self.close()
-	
+
 	def cancel(self):
 		self.close()
 
@@ -61,7 +61,7 @@ class SystemToolsTextBox2(Screen):
 
 	def __init__(self, session, text="", title=""):
 		Screen.__init__(self, session)
-		
+
 		self.text = text
 		self.title = title
 		if title != "":
@@ -69,8 +69,8 @@ class SystemToolsTextBox2(Screen):
 		self["key_red"] = Label(_("Close"))
 		self["key_green"] = Label(_("Close"))
 		self["text"] = ScrollLabel(self.text)
-		
-		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "ColorActions"], 
+
+		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "ColorActions"],
 				{
 					"cancel": self.cancel,
 					"ok": self.ok,
@@ -82,10 +82,10 @@ class SystemToolsTextBox2(Screen):
 
 	def setWindowTitle(self):
 		self.setTitle(self.title)
-		
+
 	def ok(self):
 		self.close()
-	
+
 	def cancel(self):
 		self.close()
 
@@ -98,14 +98,14 @@ class SystemToolsTextBoxEcm(Screen):
 
 	def __init__(self, session, text="", title=""):
 		Screen.__init__(self, session)
-		
+
 		self.text = text
 		self.title = title
 		if title != "":
 			self.onShown.append(self.setWindowTitle)
 		self["text"] = ScrollLabel(self.text)
-		
-		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "ColorActions"], 
+
+		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions", "ColorActions"],
 				{
 					"cancel": self.cancel,
 					"ok": self.ok,
@@ -117,9 +117,9 @@ class SystemToolsTextBoxEcm(Screen):
 
 	def setWindowTitle(self):
 		self.setTitle(self.title)
-		
+
 	def ok(self):
 		self.close()
-	
+
 	def cancel(self):
 		self.close()
