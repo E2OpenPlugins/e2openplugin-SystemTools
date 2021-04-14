@@ -34,7 +34,7 @@ config.SystemTools.setupmenu = ConfigYesNo(default=False)
 
 #global vars#################################################################
 entrylist = []
-lengthList = [0,0,0,0]
+lengthList = [0, 0, 0, 0]
 
 
 ###########################################################################
@@ -180,10 +180,10 @@ class SystemToolsSc(Screen):
 				self.close(None)
 
 	def prombt(self, com):
-		self.session.open(SystemToolsConsole,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(SystemToolsConsole, _("start shell com: %s") % (com), ["%s" % com])
 
 	def prombtbox(self, com):	
-		self.session.open(ConsoleBox,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(ConsoleBox, _("start shell com: %s") % (com), ["%s" % com])
 
 	def SoftcamRestart(self):
 		self.activityTimer.stop()
@@ -330,10 +330,10 @@ class SystemToolsInf(Screen):
 		return msg
 
 	def prombt(self, com):
-		self.session.open(SystemToolsConsole,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(SystemToolsConsole, _("start shell com: %s") % (com), ["%s" % com])
 
 	def prombtbox(self, com):	
-		self.session.open(ConsoleBox,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(ConsoleBox, _("start shell com: %s") % (com), ["%s" % com])
 
 	
 	def setWindowTitle(self):
@@ -559,10 +559,10 @@ class SystemToolsSwap(Screen):
 			self.mbox = self.session.open(MessageBox, msg, MessageBox.TYPE_INFO)
 			
 	def prombt(self, com):
-		self.session.open(Console,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(Console, _("start shell com: %s") % (com), ["%s" % com])
 
 	def prombtbox(self, com):	
-		self.session.open(ConsoleBox,_("start shell com: %s") % (com), ["%s" % com])
+		self.session.open(ConsoleBox, _("start shell com: %s") % (com), ["%s" % com])
 
 	
 	def setWindowTitle(self):
