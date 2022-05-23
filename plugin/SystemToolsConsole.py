@@ -70,6 +70,8 @@ class ConsoleBox(Screen):
 			self.container.dataAvail.remove(self.dataAvail)
 
 	def dataAvail(self, str):
+		if isinstance(str, bytes):
+			str = str.decode()
 		self["text"].setText(self["text"].getText() + str)
 
 class SystemToolsConsole(Screen):
@@ -138,4 +140,6 @@ class SystemToolsConsole(Screen):
 			self.container.dataAvail.remove(self.dataAvail)
 
 	def dataAvail(self, str):
+		if isinstance(str, bytes):
+			str = str.decode()
 		self["text"].setText(self["text"].getText() + str)
